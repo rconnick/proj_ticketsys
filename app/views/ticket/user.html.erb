@@ -1,0 +1,39 @@
+<FONT face="century gothic">
+<BODY leftmargin="10%"
+      topmargin="5%"
+      marginwidth="10%"
+      marginheight="5%">
+      
+  <%= link_to image_tag("/assets/tss.png"), :action=>"index" %>
+  <div align=right>
+    <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
+                  {:style=>'color:#000000;', :class=>"css_class"} %>
+  </div>  
+  <hr />
+  <Center>
+  |
+    <%= link_to "Home", {:action => "index"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+    <%= link_to "My Tickets", {:action => "my_tickets"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+    <%= link_to "New Ticket", {:action => "new_ticket"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  </Center>
+  <hr />
+  
+  <h3 align=center>
+    <%= "User ID: #{@user.id}" %>
+  </h3>
+  
+  <div align=left>
+    <%= "Ticket ID: #{@user.id}" %><br />
+    <%= "User: #{@user.username}" %><br />
+    <%= "Privilege: #{@user.privilege}" %><br />
+    <%= "Created At: #{@user.created_at}" %><br />
+  </div>
+</BODY>
+</FONT>
+  

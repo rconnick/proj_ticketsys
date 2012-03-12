@@ -1,0 +1,63 @@
+<FONT face="century gothic">
+<BODY leftmargin="10%"
+      topmargin="5%"
+      marginwidth="10%"
+      marginheight="5%">
+      
+  <%= link_to image_tag("/assets/tss.png"), :action=>"index" %>
+  <div align=right>
+    <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
+                  {:style=>'color:#000000;', :class=>"css_class"} %>
+  </div>  
+  <hr />	
+  <Center>
+  |
+    <%= link_to "Home", {:action => "index"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+    <%= link_to "My Tickets", {:action => "my_tickets"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+    <%= link_to "New Ticket", {:action => "new_ticket"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  </Center>
+  <hr />
+  
+  
+  <h4 align="center", style="color:#FF0000">
+    <%= params[:notice] %>
+  </h4>
+  
+  <%= form_tag :action=>"new_ticket", :method => :new_ticket do %>
+  <div align="left", class = "field">
+    <%= label_tag :user, "Name: " %> 
+    <%= text_field_tag :user, session[:uname], :size=>"50%" %>
+  </div>
+  
+  <div align="left", class = "field">
+    <%= label_tag :opened_at, "Opened At: " %> 
+    <%= text_field_tag :opened_at, Time.now(), :size=>"42%" %>
+  </div>
+
+  <div align="left", class = "field">
+    <%= label_tag :closed_at, "Closed At: " %> 
+    <%= text_field_tag :closed_at, nil, :size=>"45%" %>
+  </div>
+  <div align="left", class ="field">
+    <%= label_tag :service_provider, "Service Provider: " %> 
+    <%= text_field_tag :service_provider, params[:service_provider], :size=>"35%" %>
+  </div>
+  
+  <div align="left", class = "field", width="50%">
+    <%= label_tag :description, "Discription: " %>
+    <%= text_field_tag :description, params[:description], :size=>"180%", 
+                       :placeholder=>"Please describe your issue." %>
+  </div>
+  
+  <div align="center", class="actions">
+    <%= submit_tag "Submit Ticket" %>
+  </div>
+<% end %>
+</BODY>
+</FONT>

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-ProjTicketsys::Application.config.secret_token = 'd3d2d66d568ba19a6ff4321b54087bb5951757f3b3f25d15af72d4e19452c12b32b3884ff6b2c7beea12ebe87da70b38485ad661ebdeb1c136f131b36a50dac1'
+Tss::Application.config.secret_token = 'd1cfc06b9775ad683cc75200d1aff77ed80d8b3804f0d01db5e899b3a598db0f12680edc0b0b3df362fa2c61cdaf5b134e35d6a942e0631f2e08a7c5a798c468'

@@ -1,0 +1,63 @@
+<FONT face="century gothic">
+<BODY leftmargin="10%"
+      topmargin="5%"
+      marginwidth="10%"
+      marginheight="5%">
+      
+  <%= link_to image_tag("/assets/tss.png"), :action=>"index" %>
+  <div align=right>
+    <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
+                  {:style=>'color:#000000;', :class=>"css_class"} %>
+  </div>  
+  <hr />	
+  <Center>
+  |
+  <%= link_to "Home", {:action => "index"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  <%= link_to "My Tickets", {:action => "my_tickets"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  <%= link_to "New Ticket", {:action => "new_ticket"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  <%= link_to "View Users", {:action => "view_users"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  <%= link_to "Create User", {:action => "add_user"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  </Center>
+  <hr />
+  
+  <h4 align="center", style="color:#FF0000">
+    <%= params[:notice] %>
+  </h4>
+  
+  <h2>
+    <%= "Edit User: #{@user.username}" %>
+  </h2>
+  
+  <%= form_tag :action=>"update_user", :method => :update_user, :user_id => @user.id do %>
+  
+  <div align="left", class = "field">
+    <%= label_tag :username, "Username: " %> 
+    <%= text_field_tag :username, @user.username, :size=>"50%" %>
+  </div>
+  
+  <div align="left", class = "field">
+    <%= label_tag :password, "Password: " %> 
+    <%= text_field_tag :password, @user.password,:type => "password", :size=>"51%" %>
+  </div>
+  
+  <div align="left", class = "select", width="50%">
+    <%= label_tag :privilege, "Privilege: " %>
+    <%= select_tag "privilege", options_for_select(["admin",
+                                                    "service_provider",
+                                                    "user"], @user.privilege) %>
+  </div>
+  
+  <div align="center", class="actions">
+    <%= submit_tag "Update User" %>
+  </div>
+<% end %>
