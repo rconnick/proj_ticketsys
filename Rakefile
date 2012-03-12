@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ProjTicketsys::Application.load_tasks
+Tss::Application.load_tasks

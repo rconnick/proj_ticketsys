@@ -1,0 +1,72 @@
+<FONT face="century gothic">
+<BODY leftmargin="10%"
+      topmargin="5%"
+      marginwidth="10%"
+      marginheight="5%">
+      
+  <%= link_to image_tag("/assets/tss.png"), :action=>"index" %>
+  <div align=right>
+    <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
+                  {:style=>'color:#000000;', :class=>"css_class"} %>
+  </div>  
+  <hr />
+
+<Center>
+|
+  <%= link_to "Home", {:action => "index"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "My Tickets", {:action => "my_tickets"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "New Ticket", {:action => "new_ticket"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "View Users", {:action => "view_users"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "Create User", {:action => "add_user"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+</Center>
+<hr />
+
+<h2>
+  <%= "All Users" %>
+</h2>
+  
+  <Center>
+  <Table border="1" cellpadding="1" cellspacing="1" width="100%" overflow="hidden">
+    <tr>
+      <th> User ID: </th>
+      <th> Username: </th>
+      <th> Privilege: </th>
+      <th> Created At: </th>
+      <th> View User </th>
+      <th> Edit User </th>
+      <th> Delete User </th>
+    </tr>
+    
+    <% if !@all_users.nil? %>
+      <% @all_users.each do |user| %>
+        <tr>
+          <td><%= link_to "#{user.id}", {:action=>"user", :user_id => user.id},
+                            {:style=>'color:#000000;', :class=>"css_class"} %></td>
+          <td><%= user.username %></td>
+          <td><%= user.privilege %></td>
+          <td><%= user.created_at %></td>
+          <td><%= button_to "View User", { :action => "user", :user_id => user.id }, 
+                                             :method => :user %></td>
+          <td><%= button_to "Edit User", { :action => "edit_user", :user_id => user.id }, 
+                                             :method => :edit_user %></td>
+          <td><%= button_to "Delete User", { :action => "delete_user", :user_id => user.id }, 
+                                             :confirm => "Are you Sure?",
+                                             :method => :delete_user %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </Table>
+  </Center>
+  
+</BODY>
+</FONT>
