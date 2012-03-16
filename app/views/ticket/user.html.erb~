@@ -19,16 +19,14 @@
   <% end %>
   
   <h3 align=center>
-    <%= "Ticket ID: #{@ticket.id}" %>
+    <%= "User ID: #{@user.id}" %>
   </h3>
   
   <div align=left>
-    <%= "Ticket ID: #{@ticket.id}" %><br />
-    <%= "User: #{@ticket.user}" %><br />
-    <%= "Service Provider: #{@ticket.service_provider}" %><br />
-    <%= "Opened At: #{@ticket.opened_at}" %><br />
-    <%= "Closed At: #{@ticket.closed_at}" %><br />
-    <%= "Description: #{@ticket.description}" %><br />
+    <%= "Ticket ID: #{@user.id}" %><br />
+    <%= "User: #{@user.username}" %><br />
+    <%= "Privilege: #{@user.privilege}" %><br />
+    <%= "Created At: #{@user.created_at}" %><br />
   </div>
 </BODY>
 </FONT>

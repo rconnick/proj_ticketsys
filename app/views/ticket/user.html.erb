@@ -9,20 +9,18 @@
     <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
                   {:style=>'color:#000000;', :class=>"css_class"} %>
   </div>  
-  <hr />
-  <Center>
-  |
-    <%= link_to "Home", {:action => "index"}, 
-        {:style=>'color:#000000;', :class=>"css_class"}%>
-  |
-    <%= link_to "My Tickets", {:action => "my_tickets"}, 
-        {:style=>'color:#000000;', :class=>"css_class"}%>
-  |
-    <%= link_to "New Ticket", {:action => "new_ticket"}, 
-        {:style=>'color:#000000;', :class=>"css_class"}%>
-  |
-  </Center>
-  <hr />
+
+  <% if session[:priv]=="admin" %>
+    <%= render "admin_menu" %>
+  <% elsif session[:priv]=="service_provider" %>
+    <%= render "service_provider_menu" %>
+  <% else %>
+    <%= render "user_menu" %>
+  <% end %>
+  
+  <h4 align="center", style="color:#FF0000">
+    <%= params[:notice] %>
+  </h4>
   
   <h3 align=center>
     <%= "User ID: #{@user.id}" %>

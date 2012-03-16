@@ -5,7 +5,7 @@ class TicketController < ApplicationController
     @init = false
     @all_open_tickets = Ticket.where("closed_at = ?", "")
     @all_closed_tickets = Ticket.where("closed_at != ?", "")
-    @my_opened_tickets = Ticket.where("user = ? AND closed_at != ?", 
+    @my_opened_tickets = Ticket.where("user = ? AND closed_at == ?", 
                                      session[:uname], "")
     @my_closed_tickets = Ticket.where("user = ? AND closed_at != ?", 
                                      session[:uname], "")                               

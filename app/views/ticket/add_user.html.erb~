@@ -10,14 +10,7 @@
                   {:style=>'color:#000000;', :class=>"css_class"} %>
   </div>  
 
-  <% if session[:priv]=="admin" %>
-    <%= render "admin_menu" %>
-  <% elsif session[:priv]=="service_provider" %>
-    <% redirect_to :action => "index", :notice => "You do not have privileges" %>
-  <% else %>
-    <% redirect_to :action => "index", :notice => "You do not have privileges" %>
-  <% end %>
-
+  <%= render "admin_menu" %>
   
   <h4 align="center", style="color:#FF0000">
     <%= params[:notice] %>

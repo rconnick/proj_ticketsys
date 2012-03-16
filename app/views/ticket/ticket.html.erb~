@@ -9,14 +9,17 @@
     <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
                   {:style=>'color:#000000;', :class=>"css_class"} %>
   </div>  
-
-  <% if session[:priv]=="admin" %>
-    <%= render "admin_menu" %>
-  <% elsif session[:priv]=="service_provider" %>
-    <%= render "service_provider_menu" %>
-  <% else %>
-    <%= render "user_menu" %>
-  <% end %>
+  <hr />
+  <Center>
+  |
+    <%= link_to "Home", {:action => "index"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+    <%= link_to "New Ticket", {:action => "new_ticket"}, 
+        {:style=>'color:#000000;', :class=>"css_class"}%>
+  |
+  </Center>
+  <hr />
   
   <h3 align=center>
     <%= "Ticket ID: #{@ticket.id}" %>

@@ -1,17 +1,24 @@
-<% if session[:priv]=="admin" %>
-  <%= render "admin_menu" %>
-<% elsif session[:priv]=="service_provider" %>
-  <%= render "service_provider_menu" %>
-<% else %>
-  <% redirect_to :action => "index", :notice => "You do not have privileges" %>
-<% end %>
-
+<Center>
+|
+  <%= link_to "Home", {:action => "index"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "New Ticket", {:action => "new_ticket"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "View Users", {:action => "view_users"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+  <%= link_to "Create User", {:action => "add_user"}, 
+      {:style=>'color:#000000;', :class=>"css_class"}%>
+|
+</Center>
+<hr />
 
 <h2>
   <%= "All Open Tickets" %>
 </h2>
-
-<Center>
+  <Center>
   <Table border="1" cellpadding="1" cellspacing="1" width="100%" overflow="hidden">
     <tr>
       <th> Ticket ID: </th>
@@ -21,10 +28,12 @@
       <th> Service Provider: </th>
       <th> Description: </th>
       <th> View </th>
+      <th> Close </th>
+      <th> Delete </th>
     </tr>
     
-    <% if !@my_opened_tickets.nil? %>
-      <% @my_opened_tickets.each do |ticket| %>
+    <% if !@all_open_tickets.nil? %>
+      <% @all_open_tickets.each do |ticket| %>
         <tr>
           <td><%= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id},
                             {:style=>'color:#000000;', :class=>"css_class"} %></td>
@@ -35,15 +44,20 @@
           <td><%= ticket.description.ljust(50) %></td>
           <td><%= button_to "View Ticket", { :action => "ticket", :ticket_id => ticket.id }, 
                                              :method => :ticket %></td>
+          <td><%= button_to "Close Ticket", { :action => "close", :ticket_id => ticket.id },
+                    :confirm => "Are you sure?", :method => :close %></td>
+          <td><%= button_to "Delete Ticket", { :action => "delete", :ticket_id => ticket.id },
+                    :confirm => "Are you sure?", :method => :delete %></td>
+          <td
         </tr>
       <% end %>
     <% end %>
   </Table>
-</Center>
-
+  </Center>
+  
 <h2>
   <%= "All Closed Tickets" %>
-</h2>
+</h2>  
 
 <Center>
   <Table border="1" cellpadding="1" cellspacing="1" width="100%" overflow="hidden">
@@ -55,10 +69,12 @@
       <th> Service Provider: </th>
       <th> Description: </th>
       <th> View </th>
+      <th> Re-Open </th>
+      <th> Delete </th>
     </tr>
     
-    <% if !@my_closed_tickets.nil? %>
-      <% @my_closed_tickets.each do |ticket| %>
+    <% if !@all_closed_tickets.nil? %>
+      <% @all_closed_tickets.each do |ticket| %>
         <tr>
           <td><%= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id},
                             {:style=>'color:#000000;', :class=>"css_class"} %></td>
@@ -69,6 +85,10 @@
           <td><%= ticket.description.ljust(50) %></td>
           <td><%= button_to "View Ticket", { :action => "ticket", :ticket_id => ticket.id }, 
                                              :method => :ticket %></td>
+          <td><%= button_to "Re-Open Ticket", { :action => "open", :ticket_id => ticket.id },
+                    :confirm => "Are you sure?", :method => :open %></td>
+          <td><%= button_to "Delete Ticket", { :action => "delete", :ticket_id => ticket.id },
+                    :confirm => "Are you sure?", :method => :delete %></td>
         </tr>
       <% end %>
     <% end %>

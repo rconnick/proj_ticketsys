@@ -2,12 +2,10 @@
   <%= Time.now() %>
 </div>
 <hr />
-
 <% if !params[:notice].nil? %>
   <Center>
-  <h4 align="center", style="color:#FF0000">
     <%= params[:notice] %>
-  </h4>
+    <hr />
   </Center>
 <% end %>
 

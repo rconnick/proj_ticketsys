@@ -21939,3 +21939,95 @@ Served asset /application.js - 304 Not Modified (0ms)
 
 Started GET "/assets/tss.png" for 127.0.0.1 at Sun Mar 11 15:00:31 -0700 2012
 Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-16 10:40:56 -0700
+Served asset /rails.png - 200 OK (23ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-16 10:49:05 -0700
+Served asset /rails.png - 304 Not Modified (14ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 10:51:13 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_login_screen.html.erb (4.3ms)
+  Rendered ticket/index.html.erb within layouts/application (51.0ms)
+Compiled ticket.css  (122ms)  (pid 7708)
+Compiled application.css  (141ms)  (pid 7708)
+Compiled jquery.js  (2ms)  (pid 7708)
+Compiled jquery_ujs.js  (1ms)  (pid 7708)
+Compiled ticket.js  (406ms)  (pid 7708)
+Compiled application.js  (551ms)  (pid 7708)
+Completed 200 OK in 1355ms (Views: 1308.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /application.css - 200 OK (38ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /ticket.css - 200 OK (19ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /jquery_ujs.js - 200 OK (33ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /application.js - 200 OK (73ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /jquery.js - 200 OK (56ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /ticket.js - 200 OK (7ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 10:51:16 -0700
+Served asset /tss.png - 200 OK (80ms)
+
+
+Started POST "/ticket/login?method=login" for 127.0.0.1 at 2012-03-16 10:51:38 -0700
+Processing by TicketController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "username"=>"admin", "password"=>"[FILTERED]", "commit"=>"Login", "method"=>"login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'admin' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 134ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 10:51:38 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_admin_menu.html.erb (1.7ms)
+  [1m[35mTicket Load (0.6ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mTicket Load (0.4ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (closed_at != '')[0m
+  Rendered ticket/_admin_home.html.erb (73.1ms)
+  Rendered ticket/_home_screen.html.erb (76.2ms)
+  Rendered ticket/index.html.erb within layouts/application (77.4ms)
+Completed 200 OK in 125ms (Views: 121.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 10:51:39 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 10:51:39 -0700
+Served asset /application.css - 304 Not Modified (26ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:39 -0700
+Served asset /application.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:39 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:39 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 10:51:39 -0700
+Served asset /jquery.js - 304 Not Modified (14ms)
