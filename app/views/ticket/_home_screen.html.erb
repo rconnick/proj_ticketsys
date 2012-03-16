@@ -2,7 +2,6 @@
   <%= link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
                 {:style=>'color:#000000;', :class=>"css_class"} %>
 </div>  
-<hr />
 
 <% if session[:priv]=="admin" %>
   <%= render "admin_home" %>
