@@ -53,11 +53,11 @@ class TicketController < ApplicationController
                       :service_privder => params[:service_provider], 
                       :description => params[:description]
         end
-      else
-        redirect_to :action => "index", 
-                    :notice => "Username: #{params[:user]} cannot be found"
       end
-    end
+    else
+      redirect_to :action => "index", 
+                  :notice => "User name: #{params[:user]} cannot be found"
+    end 
   end
   
   def ticket ## AKA View Ticket

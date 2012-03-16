@@ -22405,3 +22405,1110 @@ Served asset /application.js - 304 Not Modified (25ms)
 
 Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:02:49 -0700
 Served asset /tss.png - 304 Not Modified (0ms)
+  [1m[36m (67.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (42.8ms)[0m  CREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (19.8ms)[0m  [1mCREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (35.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (42.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (2.5ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (44.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (72.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311031545')[0m
+  [1m[35m (69.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311020240')
+  [1m[36m (69.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311020224')[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (87.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (16.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120311020224)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 FROM "users" WHERE "users"."username" = 'admin' LIMIT 1
+  [1m[36mSQL (7.2ms)[0m  [1mINSERT INTO "users" ("created_at", "password", "privilege", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 Mar 2012 18:28:20 UTC +00:00], ["password", "password"], ["privilege", "admin"], ["updated_at", Fri, 16 Mar 2012 18:28:20 UTC +00:00], ["username", "admin"]]
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120311020224')
+  [1m[36m (29.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateInits (20120311020240)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "inits" ("created_at", "init", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 16 Mar 2012 18:28:20 UTC +00:00], ["init", false], ["updated_at", Fri, 16 Mar 2012 18:28:20 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120311020240')[0m
+  [1m[35m (90.9ms)[0m  commit transaction
+Migrating to CreateTickets (20120311031545)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120311031545')[0m
+  [1m[35m (63.1ms)[0m  commit transaction
+  [1m[36m (0.6ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("inits")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("tickets")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:29:02 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_service_provider_menu.html.erb (1.7ms)
+  [1m[36mTicket Load (0.9ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (user = 'davidp' AND closed_at == '')[0m
+SQLite3::SQLException: no such column: user: SELECT "tickets".* FROM "tickets"  WHERE (user = 'davidp' AND closed_at == '')
+  Rendered ticket/_service_provider_home.html.erb (18.7ms)
+  Rendered ticket/_home_screen.html.erb (21.2ms)
+  Rendered ticket/index.html.erb within layouts/application (69.1ms)
+Completed 500 Internal Server Error in 266ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: user: SELECT "tickets".* FROM "tickets"  WHERE (user = 'davidp' AND closed_at == '')):
+    24:     </tr>
+    25:     
+    26:     <% if !@my_opened_tickets.nil? %>
+    27:       <% @my_opened_tickets.each do |ticket| %>
+    28:         <tr>
+    29:           <td><%= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id},
+    30:                             {:style=>'color:#000000;', :class=>"css_class"} %></td>
+  app/views/ticket/_service_provider_home.html.erb:27:in `_app_views_ticket__service_provider_home_html_erb__637096694_86270210'
+  app/views/ticket/_home_screen.html.erb:9:in `_app_views_ticket__home_screen_html_erb___662056395_86397430'
+  app/views/ticket/index.html.erb:13:in `_app_views_ticket_index_html_erb__332634895_99051830'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (35.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:29:18 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_service_provider_menu.html.erb (0.9ms)
+  [1m[35mTicket Load (1.0ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (user = 'davidp' AND closed_at == '')
+SQLite3::SQLException: no such column: user: SELECT "tickets".* FROM "tickets"  WHERE (user = 'davidp' AND closed_at == '')
+  Rendered ticket/_service_provider_home.html.erb (11.4ms)
+  Rendered ticket/_home_screen.html.erb (15.4ms)
+  Rendered ticket/index.html.erb within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 186ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: user: SELECT "tickets".* FROM "tickets"  WHERE (user = 'davidp' AND closed_at == '')):
+    24:     </tr>
+    25:     
+    26:     <% if !@my_opened_tickets.nil? %>
+    27:       <% @my_opened_tickets.each do |ticket| %>
+    28:         <tr>
+    29:           <td><%= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id},
+    30:                             {:style=>'color:#000000;', :class=>"css_class"} %></td>
+  app/views/ticket/_service_provider_home.html.erb:27:in `_app_views_ticket__service_provider_home_html_erb__637096694_86270210'
+  app/views/ticket/_home_screen.html.erb:9:in `_app_views_ticket__home_screen_html_erb___662056395_86397430'
+  app/views/ticket/index.html.erb:13:in `_app_views_ticket_index_html_erb__332634895_99051830'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (13.7ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (30.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:31:05 -0700
+Processing by TicketController#index as HTML
+Completed 500 Internal Server Error in 2ms
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 1) in: user = user_id AND closed_at == ?):
+  app/controllers/ticket_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (13.0ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:32:06 -0700
+Processing by TicketController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 1) in: user = user_id AND closed_at == ?):
+  app/controllers/ticket_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.5ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:32:11 -0700
+Processing by TicketController#index as HTML
+Completed 500 Internal Server Error in 12ms
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 1) in: user = user_id AND closed_at == ?):
+  app/controllers/ticket_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (30.0ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (73.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:32:13 -0700
+Processing by TicketController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 1) in: user = user_id AND closed_at == ?):
+  app/controllers/ticket_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (11.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (50.7ms)
+
+
+Started GET "/ticket" for 127.0.0.1 at 2012-03-16 11:32:17 -0700
+Processing by TicketController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (2 for 1) in: user = user_id AND closed_at == ?):
+  app/controllers/ticket_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.2ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.0ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (57.2ms)
+
+
+Started GET "/ticket" for 127.0.0.1 at 2012-03-16 11:33:02 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_service_provider_menu.html.erb (1.4ms)
+  [1m[36mTicket Load (0.6ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at == '')[0m
+  [1m[35mTicket Load (0.2ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at != '')
+  Rendered ticket/_service_provider_home.html.erb (7.7ms)
+  Rendered ticket/_home_screen.html.erb (10.2ms)
+  Rendered ticket/index.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 245ms (Views: 214.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:33:02 -0700
+Served asset /ticket.css - 304 Not Modified (102ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:33:03 -0700
+Served asset /application.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:03 -0700
+Served asset /ticket.js - 304 Not Modified (15ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:03 -0700
+Served asset /jquery.js - 304 Not Modified (70ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:03 -0700
+Served asset /application.js - 304 Not Modified (148ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:03 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:33:03 -0700
+Served asset /tss.png - 304 Not Modified (15ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_service_provider_menu.html.erb (1.0ms)
+  [1m[36mTicket Load (0.8ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at == '')[0m
+  [1m[35mTicket Load (0.2ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at != '')
+  Rendered ticket/_service_provider_home.html.erb (11.4ms)
+  Rendered ticket/_home_screen.html.erb (17.6ms)
+  Rendered ticket/index.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 123ms (Views: 109.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Served asset /ticket.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Served asset /application.js - 304 Not Modified (38ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Served asset /ticket.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:09 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:33:10 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:33:12 -0700
+Processing by TicketController#new_ticket as HTML
+  Rendered ticket/_service_provider_menu.html.erb (1.0ms)
+  Rendered ticket/new_ticket.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 142ms (Views: 140.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /jquery.js - 304 Not Modified (20ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /application.js - 304 Not Modified (50ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /ticket.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /ticket.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:33:13 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started POST "/ticket/new_ticket?method=new_ticket" for 127.0.0.1 at 2012-03-16 11:33:40 -0700
+Processing by TicketController#new_ticket as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "user"=>"davidp", "opened_at"=>"2012-03-16 11:33:12 -0700", "closed_at"=>"", "service_provider"=>"", "description"=>"Computer is on fire", "commit"=>"Submit Ticket", "method"=>"new_ticket"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'davidp' LIMIT 1[0m
+Completed 500 Internal Server Error in 99ms
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/controllers/ticket_controller.rb:42:in `block in new_ticket'
+  app/controllers/ticket_controller.rb:40:in `new'
+  app/controllers/ticket_controller.rb:40:in `new_ticket'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (78.9ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (95.6ms)
+
+
+Started GET "/ticket/logout" for 127.0.0.1 at 2012-03-16 11:36:38 -0700
+Processing by TicketController#logout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:36:42 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_login_screen.html.erb (4.2ms)
+  Rendered ticket/index.html.erb within layouts/application (107.0ms)
+Completed 200 OK in 496ms (Views: 407.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:36:42 -0700
+Served asset /application.css - 304 Not Modified (38ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:36:43 -0700
+Served asset /application.js - 304 Not Modified (102ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:36:43 -0700
+Served asset /jquery.js - 304 Not Modified (99ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:36:43 -0700
+Served asset /ticket.js - 304 Not Modified (194ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:36:43 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:36:43 -0700
+Served asset /ticket.css - 304 Not Modified (19ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:36:43 -0700
+Served asset /tss.png - 304 Not Modified (3ms)
+
+
+Started POST "/ticket/login?method=login" for 127.0.0.1 at 2012-03-16 11:41:23 -0700
+Processing by TicketController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "username"=>"admin", "password"=>"[FILTERED]", "commit"=>"Login", "method"=>"login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'admin' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 59ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:41:30 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_admin_menu.html.erb (2.1ms)
+  [1m[35mTicket Load (0.7ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (closed_at != '')[0m
+  Rendered ticket/_admin_home.html.erb (8.1ms)
+  Rendered ticket/_home_screen.html.erb (10.9ms)
+  Rendered ticket/index.html.erb within layouts/application (47.8ms)
+Completed 200 OK in 542ms (Views: 295.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /jquery.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /ticket.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (23ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /ticket.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /application.js - 304 Not Modified (93ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:41:31 -0700
+Served asset /tss.png - 304 Not Modified (5ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:41:38 -0700
+Processing by TicketController#new_ticket as HTML
+Redirected to http://localhost:3000/?notice=User+name%3A++cannot+be+found
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/?notice=User+name%3A++cannot+be+found" for 127.0.0.1 at 2012-03-16 11:41:38 -0700
+Processing by TicketController#index as HTML
+  Parameters: {"notice"=>"User name:  cannot be found"}
+  Rendered ticket/_admin_menu.html.erb (1.4ms)
+  [1m[35mTicket Load (0.5ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mTicket Load (0.4ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (closed_at != '')[0m
+  Rendered ticket/_admin_home.html.erb (5.5ms)
+  Rendered ticket/_home_screen.html.erb (8.0ms)
+  Rendered ticket/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 65ms (Views: 61.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /application.js - 304 Not Modified (32ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:41:39 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:41:46 -0700
+Processing by TicketController#new_ticket as HTML
+Redirected to http://localhost:3000/?notice=User+name%3A++cannot+be+found
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/?notice=User+name%3A++cannot+be+found" for 127.0.0.1 at 2012-03-16 11:41:46 -0700
+Processing by TicketController#index as HTML
+  Parameters: {"notice"=>"User name:  cannot be found"}
+  Rendered ticket/_admin_menu.html.erb (0.6ms)
+  [1m[35mTicket Load (0.9ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (closed_at != '')[0m
+  Rendered ticket/_admin_home.html.erb (16.0ms)
+  Rendered ticket/_home_screen.html.erb (24.5ms)
+  Rendered ticket/index.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 57ms (Views: 55.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /application.js - 304 Not Modified (46ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /jquery.js - 304 Not Modified (18ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:41:47 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:41:52 -0700
+Processing by TicketController#new_ticket as HTML
+Redirected to http://localhost:3000/?notice=User+name%3A++cannot+be+found
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/?notice=User+name%3A++cannot+be+found" for 127.0.0.1 at 2012-03-16 11:41:52 -0700
+Processing by TicketController#index as HTML
+  Parameters: {"notice"=>"User name:  cannot be found"}
+  Rendered ticket/_admin_menu.html.erb (184.1ms)
+  [1m[35mTicket Load (0.7ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (closed_at != '')[0m
+  Rendered ticket/_admin_home.html.erb (188.6ms)
+  Rendered ticket/_home_screen.html.erb (190.0ms)
+  Rendered ticket/index.html.erb within layouts/application (199.5ms)
+Completed 200 OK in 215ms (Views: 213.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:52 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:53 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:53 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:53 -0700
+Served asset /application.js - 304 Not Modified (38ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:53 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:53 -0700
+Served asset /jquery.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:41:53 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:41:54 -0700
+Processing by TicketController#new_ticket as HTML
+Redirected to http://localhost:3000/?notice=User+name%3A++cannot+be+found
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/?notice=User+name%3A++cannot+be+found" for 127.0.0.1 at 2012-03-16 11:41:54 -0700
+Processing by TicketController#index as HTML
+  Parameters: {"notice"=>"User name:  cannot be found"}
+  Rendered ticket/_admin_menu.html.erb (1.5ms)
+  [1m[35mTicket Load (0.4ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (closed_at != '')[0m
+  Rendered ticket/_admin_home.html.erb (13.4ms)
+  Rendered ticket/_home_screen.html.erb (14.7ms)
+  Rendered ticket/index.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /jquery.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:41:55 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:43:14 -0700
+Processing by TicketController#new_ticket as HTML
+  Rendered ticket/_admin_menu.html.erb (20.0ms)
+  Rendered ticket/new_ticket.html.erb within layouts/application (56.7ms)
+Completed 200 OK in 104ms (Views: 103.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /ticket.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:43:15 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/add_user" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Processing by TicketController#add_user as HTML
+  Rendered ticket/_admin_menu.html.erb (38.7ms)
+  Rendered ticket/add_user.html.erb within layouts/application (177.2ms)
+Completed 200 OK in 223ms (Views: 221.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Served asset /jquery.js - 304 Not Modified (29ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Served asset /application.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:24 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:43:25 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started POST "/ticket/add_user?method=add_user" for 127.0.0.1 at 2012-03-16 11:43:30 -0700
+Processing by TicketController#add_user as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "username"=>"davidp", "password"=>"[FILTERED]", "privilege"=>"user", "commit"=>"Create User", "method"=>"add_user"}
+  [1m[35m (10.8ms)[0m  begin transaction
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 FROM "users" WHERE "users"."username" = 'davidp' LIMIT 1[0m
+  [1m[35mSQL (8.6ms)[0m  INSERT INTO "users" ("created_at", "password", "privilege", "updated_at", "username") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 Mar 2012 18:43:31 UTC +00:00], ["password", "davidp"], ["privilege", "user"], ["updated_at", Fri, 16 Mar 2012 18:43:31 UTC +00:00], ["username", "davidp"]]
+  [1m[36m (92.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/ticket/view_users
+Completed 302 Found in 493ms (ActiveRecord: 113.0ms)
+
+
+Started GET "/ticket/view_users" for 127.0.0.1 at 2012-03-16 11:43:31 -0700
+Processing by TicketController#view_users as HTML
+  Rendered ticket/_admin_menu.html.erb (15.7ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE (username != '')
+  Rendered ticket/view_users.html.erb within layouts/application (67.8ms)
+Completed 200 OK in 118ms (Views: 116.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (25ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:43:32 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/logout" for 127.0.0.1 at 2012-03-16 11:43:42 -0700
+Processing by TicketController#logout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:43:42 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_login_screen.html.erb (8.1ms)
+  Rendered ticket/index.html.erb within layouts/application (54.4ms)
+Completed 200 OK in 97ms (Views: 91.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:43 -0700
+Served asset /jquery.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:43 -0700
+Served asset /ticket.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:43 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:43 -0700
+Served asset /application.js - 304 Not Modified (41ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:43 -0700
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:43 -0700
+Served asset /ticket.js - 304 Not Modified (20ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:43:44 -0700
+Served asset /tss.png - 304 Not Modified (6ms)
+
+
+Started POST "/ticket/login?method=login" for 127.0.0.1 at 2012-03-16 11:43:49 -0700
+Processing by TicketController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "username"=>"davidp", "password"=>"[FILTERED]", "commit"=>"Login", "method"=>"login"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'davidp' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_user_menu.html.erb (6.4ms)
+  [1m[35mTicket Load (0.2ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at == '')
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at != '')[0m
+  Rendered ticket/_user_home.html.erb (19.0ms)
+  Rendered ticket/_home_screen.html.erb (38.7ms)
+  Rendered ticket/index.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 102ms (Views: 99.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Served asset /application.js - 304 Not Modified (59ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Served asset /jquery.js - 304 Not Modified (23ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:50 -0700
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:43:51 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/new_ticket" for 127.0.0.1 at 2012-03-16 11:43:57 -0700
+Processing by TicketController#new_ticket as HTML
+  Rendered ticket/_user_menu.html.erb (19.8ms)
+  Rendered ticket/new_ticket.html.erb within layouts/application (24.9ms)
+Completed 200 OK in 97ms (Views: 96.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /application.js - 304 Not Modified (54ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /ticket.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /jquery.js - 304 Not Modified (43ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:43:58 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started POST "/ticket/new_ticket?method=new_ticket" for 127.0.0.1 at 2012-03-16 11:44:03 -0700
+Processing by TicketController#new_ticket as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "user"=>"davidp", "opened_at"=>"2012-03-16 11:43:57 -0700", "closed_at"=>"", "service_provider"=>"", "description"=>"Computer is on fire", "commit"=>"Submit Ticket", "method"=>"new_ticket"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'davidp' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "tickets" ("closed_at", "created_at", "description", "opened_at", "service_provider", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["closed_at", ""], ["created_at", Fri, 16 Mar 2012 18:44:03 UTC +00:00], ["description", "Computer is on fire"], ["opened_at", "2012-03-16 11:43:57 -0700"], ["service_provider", ""], ["updated_at", Fri, 16 Mar 2012 18:44:03 UTC +00:00], ["user_id", 2]]
+  [1m[36m (106.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 219ms (ActiveRecord: 108.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_user_menu.html.erb (0.7ms)
+  [1m[35mTicket Load (0.6ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at == '')
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTicket Load (0.3ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (user_id = 2 AND closed_at != '')
+  Rendered ticket/_user_home.html.erb (22.2ms)
+  Rendered ticket/_home_screen.html.erb (23.9ms)
+  Rendered ticket/index.html.erb within layouts/application (41.4ms)
+Completed 200 OK in 150ms (Views: 121.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /ticket.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /jquery.js - 304 Not Modified (15ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /application.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:04 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/ticket/logout" for 127.0.0.1 at 2012-03-16 11:44:16 -0700
+Processing by TicketController#logout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:44:16 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_login_screen.html.erb (18.1ms)
+  Rendered ticket/index.html.erb within layouts/application (33.5ms)
+Completed 200 OK in 468ms (Views: 466.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:17 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:17 -0700
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:17 -0700
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:17 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:17 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:17 -0700
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:18 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started POST "/ticket/login?method=login" for 127.0.0.1 at 2012-03-16 11:44:25 -0700
+Processing by TicketController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "username"=>"admin", "password"=>"[FILTERED]", "commit"=>"Login", "method"=>"login"}
+  [1m[36mUser Load (9.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'admin' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:44:25 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_admin_menu.html.erb (1.5ms)
+  [1m[35mTicket Load (6.9ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTicket Load (0.4ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at != '')
+  Rendered ticket/_admin_home.html.erb (51.7ms)
+  Rendered ticket/_home_screen.html.erb (53.1ms)
+  Rendered ticket/index.html.erb within layouts/application (54.9ms)
+Completed 200 OK in 118ms (Views: 109.1ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /ticket.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /application.js - 304 Not Modified (41ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /jquery.js - 304 Not Modified (36ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:26 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started GET "/ticket/view_users" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Processing by TicketController#view_users as HTML
+  Rendered ticket/_admin_menu.html.erb (1.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE (username != '')[0m
+  Rendered ticket/view_users.html.erb within layouts/application (74.7ms)
+Completed 200 OK in 108ms (Views: 93.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Served asset /application.js - 304 Not Modified (45ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Served asset /ticket.css - 304 Not Modified (19ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:37 -0700
+Served asset /ticket.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:38 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started POST "/ticket/edit_user?user_id=2" for 127.0.0.1 at 2012-03-16 11:44:41 -0700
+Processing by TicketController#edit_user as HTML
+  Parameters: {"authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "user_id"=>"2"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered ticket/_admin_menu.html.erb (12.3ms)
+  Rendered ticket/edit_user.html.erb within layouts/application (64.8ms)
+Completed 200 OK in 79ms (Views: 76.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:41 -0700
+Served asset /application.js - 304 Not Modified (30ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:42 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:42 -0700
+Served asset /jquery.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:42 -0700
+Served asset /ticket.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:42 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (223ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:42 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:42 -0700
+Served asset /tss.png - 304 Not Modified (1ms)
+
+
+Started POST "/ticket/update_user?method=update_user&user_id=2" for 127.0.0.1 at 2012-03-16 11:44:50 -0700
+Processing by TicketController#update_user as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UuFMfrEIS/3IdQC2vxpQGsiqY3ykLQJXC6KoSiHatck=", "username"=>"Davidp", "password"=>"[FILTERED]", "privilege"=>"user", "commit"=>"Update User", "method"=>"update_user", "user_id"=>"2"}
+  [1m[36mUser Load (3.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (1.1ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."username" = 'Davidp' AND "users"."id" != 2) LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  UPDATE "users" SET "username" = 'Davidp', "updated_at" = '2012-03-16 18:44:50.294642' WHERE "users"."id" = 2
+  [1m[36m (432.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (3.4ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."username" = 'Davidp' AND "users"."id" != 2) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/ticket/view_users
+Completed 302 Found in 488ms (ActiveRecord: 440.9ms)
+
+
+Started GET "/ticket/view_users" for 127.0.0.1 at 2012-03-16 11:44:50 -0700
+Processing by TicketController#view_users as HTML
+  Rendered ticket/_admin_menu.html.erb (1.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE (username != '')[0m
+  Rendered ticket/view_users.html.erb within layouts/application (20.8ms)
+Completed 200 OK in 37ms (Views: 34.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /jquery.js - 304 Not Modified (33ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /ticket.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /application.js - 304 Not Modified (31ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:51 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-16 11:44:58 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_admin_menu.html.erb (12.4ms)
+  [1m[35mTicket Load (3.6ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTicket Load (0.6ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at != '')
+  Rendered ticket/_admin_home.html.erb (60.4ms)
+  Rendered ticket/_home_screen.html.erb (62.5ms)
+  Rendered ticket/index.html.erb within layouts/application (64.5ms)
+Completed 200 OK in 94ms (Views: 83.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /jquery.js - 304 Not Modified (30ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /application.js - 304 Not Modified (25ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /ticket.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
+Served asset /tss.png - 304 Not Modified (0ms)

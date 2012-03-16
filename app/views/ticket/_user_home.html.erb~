@@ -1,16 +1,10 @@
-<Center>
-|
-  <%= link_to "Home", {:action => "index"}, 
-      {:style=>'color:#000000;', :class=>"css_class"}%>
-|
-  <%= link_to "My Tickets", {:action => "my_tickets"}, 
-      {:style=>'color:#000000;', :class=>"css_class"}%>
-|
-  <%= link_to "New Ticket", {:action => "new_ticket"}, 
-      {:style=>'color:#000000;', :class=>"css_class"}%>
-|
-</Center>
-<hr />
+  <% if session[:priv]=="admin" %>
+    <%= render "admin_menu" %>
+  <% elsif session[:priv]=="service_provider" %>
+    <%= render "service_provider_menu" %>
+  <% else %>
+    <%= render "user_menu" %>
+  <% end %>
 
 <h2>
   <%= "All Open Tickets" %>
