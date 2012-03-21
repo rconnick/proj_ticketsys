@@ -19,8 +19,8 @@ Background: tickets in system
 Scenario: add ticket
 
   When I click "New Ticket"
-  I should be on the "New Ticket Page"
+  Then I should be on the "New Ticket Page"
   When I fill in name with "Broken Computer"
   And I click "Send New Ticket"
-  I should be on the "Ticket View" page
+  Then I should be on the "Ticket View" page
   And I should see "Broken Computer"
