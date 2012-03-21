@@ -23512,3 +23512,316 @@ Served asset /jquery_ujs.js - 304 Not Modified (0ms)
 
 Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-16 11:44:59 -0700
 Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-20 21:34:59 -0700
+Served asset /rails.png - 304 Not Modified (63ms)
+
+
+Started GET "/ticket" for 127.0.0.1 at 2012-03-20 21:35:10 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_login_screen.html.erb (8.0ms)
+  Rendered ticket/index.html.erb within layouts/application (416.7ms)
+Compiled ticket.css  (656ms)  (pid 2691)
+Compiled application.css  (688ms)  (pid 2691)
+Compiled jquery.js  (10ms)  (pid 2691)
+Compiled jquery_ujs.js  (0ms)  (pid 2691)
+Compiled ticket.js  (510ms)  (pid 2691)
+Compiled application.js  (772ms)  (pid 2691)
+Completed 200 OK in 3661ms (Views: 3336.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /application.css - 304 Not Modified (158ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /ticket.css - 304 Not Modified (48ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /application.js - 304 Not Modified (109ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /ticket.js - 304 Not Modified (24ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (23ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /jquery.js - 304 Not Modified (35ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-20 21:35:15 -0700
+Served asset /tss.png - 304 Not Modified (257ms)
+
+
+Started POST "/ticket/login?method=login" for 127.0.0.1 at 2012-03-20 21:35:25 -0700
+Processing by TicketController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UHlhlOl3waFRri8n7FVw7OiO0pueucGr87O5zueKBW8=", "username"=>"admin", "password"=>"[FILTERED]", "commit"=>"Login", "method"=>"login"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'admin' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 194ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-03-20 21:35:26 -0700
+Served asset /rails.png - 304 Not Modified (0ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2012-03-20 21:35:33 -0700
+
+ActionController::RoutingError (No route matches [GET] "/tickets"):
+  actionpack (3.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.2) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.2) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.2) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/static.rb:61:in `call'
+  railties (3.2.2) lib/rails/engine.rb:479:in `call'
+  railties (3.2.2) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.2) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /usr/local/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.0ms)
+
+
+Started GET "/ticket" for 127.0.0.1 at 2012-03-20 21:35:38 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_admin_menu.html.erb (4.3ms)
+  [1m[35mTicket Load (0.7ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTicket Load (0.8ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at != '')
+  Rendered ticket/_admin_home.html.erb (335.4ms)
+  Rendered ticket/_home_screen.html.erb (347.6ms)
+  Rendered ticket/index.html.erb within layouts/application (356.1ms)
+Completed 200 OK in 391ms (Views: 380.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /application.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-20 21:35:39 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/ticket/view_users" for 127.0.0.1 at 2012-03-20 21:36:18 -0700
+Processing by TicketController#view_users as HTML
+  Rendered ticket/_admin_menu.html.erb (7.2ms)
+  [1m[36mUser Load (9.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE (username != '')[0m
+  Rendered ticket/view_users.html.erb within layouts/application (101.3ms)
+Completed 200 OK in 128ms (Views: 116.6ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-20 21:36:19 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-20 21:36:19 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:19 -0700
+Served asset /jquery.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:19 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:19 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:19 -0700
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-20 21:36:20 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/ticket/add_user" for 127.0.0.1 at 2012-03-20 21:36:29 -0700
+Processing by TicketController#add_user as HTML
+  Rendered ticket/_admin_menu.html.erb (16.9ms)
+  Rendered ticket/add_user.html.erb within layouts/application (160.9ms)
+Completed 200 OK in 186ms (Views: 179.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-20 21:36:30 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:30 -0700
+Served asset /jquery.js - 304 Not Modified (22ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:31 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-20 21:36:31 -0700
+Served asset /ticket.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:31 -0700
+Served asset /application.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-20 21:36:31 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-20 21:36:31 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-03-20 23:04:13 -0700
+Processing by TicketController#index as HTML
+  Rendered ticket/_admin_menu.html.erb (21.6ms)
+  [1m[35mTicket Load (0.6ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at = '')
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTicket Load (0.5ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (closed_at != '')
+  Rendered ticket/_admin_home.html.erb (93.7ms)
+  Rendered ticket/_home_screen.html.erb (129.1ms)
+  Rendered ticket/index.html.erb within layouts/application (142.4ms)
+Completed 200 OK in 224ms (Views: 211.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/ticket.css?body=1" for 127.0.0.1 at 2012-03-20 23:04:14 -0700
+Served asset /ticket.css - 304 Not Modified (66ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-20 23:04:14 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-20 23:04:14 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/ticket.js?body=1" for 127.0.0.1 at 2012-03-20 23:04:14 -0700
+Served asset /ticket.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-20 23:04:14 -0700
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-20 23:04:14 -0700
+Served asset /application.js - 304 Not Modified (21ms)
+
+
+Started GET "/assets/tss.png" for 127.0.0.1 at 2012-03-20 23:04:15 -0700
+Served asset /tss.png - 304 Not Modified (0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120311020224)
+Migrating to CreateInits (20120311020240)
+Migrating to CreateTickets (20120311031545)
+  [1m[35m (0.7ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("inits")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("tickets")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.9ms)[0m  select sqlite_version(*)
+  [1m[36m (88.5ms)[0m  [1mCREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (14.5ms)[0m  CREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (18.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (24.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (16.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (13.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311031545')
+  [1m[36m (8.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311020240')[0m
+  [1m[35m (9.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311020224')
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.8ms)[0m  select sqlite_version(*)
+  [1m[36m (32.6ms)[0m  [1mCREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (32.2ms)[0m  CREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (18.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (11.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (13.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (17.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311031545')
+  [1m[36m (11.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311020240')[0m
+  [1m[35m (12.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311020224')
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120311020224)
+Migrating to CreateInits (20120311020240)
+Migrating to CreateTickets (20120311031545)
+  [1m[35m (0.9ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("inits")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("tickets")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.7ms)[0m  select sqlite_version(*)
+  [1m[36m (44.4ms)[0m  [1mCREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (31.5ms)[0m  CREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (19.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (13.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (22.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (13.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311031545')
+  [1m[36m (9.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311020240')[0m
+  [1m[35m (9.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311020224')
+  [1m[36m (1.2ms)[0m  [1mbegin transaction[0m
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (1.2ms)[0m  select sqlite_version(*)
+  [1m[36m (27.5ms)[0m  [1mCREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (42.2ms)[0m  CREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (22.1ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (13.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (42.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (15.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311031545')
+  [1m[36m (23.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311020240')[0m
+  [1m[35m (12.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311020224')
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (76.4ms)[0m  [1mCREATE TABLE "inits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "init" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (32.6ms)[0m  CREATE TABLE "tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "service_provider" varchar(255), "description" varchar(255), "closed_at" varchar(255), "opened_at" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (17.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password" varchar(255), "privilege" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (14.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (16.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (12.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311031545')
+  [1m[36m (10.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120311020240')[0m
+  [1m[35m (10.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120311020224')

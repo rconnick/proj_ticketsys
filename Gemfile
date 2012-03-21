@@ -17,6 +17,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'ZenTest'
+  gem 'factory_girl'
+  gem 'factory_girl_rails', "~> 1.2"
+  gem 'faker'
+  
 end
 group :production do
   gem 'pg'
