@@ -70,19 +70,20 @@ class TicketController < ApplicationController
   end
   
   def close
-    ticket = Ticket.find_by_id(params[:ticket_id])
-    ticket.update_attributes!(:closed_at => Time.now())
+    @ticket = Ticket.find_by_id(params[:ticket_id])
+    @ticket.update_attributes!(:closed_at => Time.now())
     redirect_to :action => "index"
   end
   
   def open
-    ticket = Ticket.find_by_id(params[:ticket_id])
-    ticket.update_attributes!(:closed_at => "")
+    @ticket = Ticket.find_by_id(params[:ticket_id])
+    @ticket.update_attributes!(:closed_at => "")
     redirect_to :action => "index"
   end
   
   def view_users
     @all_users = User.where("username != ?", "")
+    #@all_users = User.all
   end
   
   def add_user
