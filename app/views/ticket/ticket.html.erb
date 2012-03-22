@@ -24,7 +24,7 @@
   
   <div align=left>
     <%= "Ticket ID: #{@ticket.id}" %><br />
-    <%= "User: #{User.find(@ticket.user).username}" %><br />
+    <%= "User: #{User.find(@ticket.user_id).username}" %><br />
     <%= "Service Provider: #{@ticket.service_provider}" %><br />
     <%= "Opened At: #{@ticket.opened_at}" %><br />
     <%= "Closed At: #{@ticket.closed_at}" %><br />
