@@ -43,7 +43,7 @@
                             {:style=>'color:#000000;', :class=>"css_class"} %></td>
           <td><%= ticket.opened_at %></td>
           <td><%= ticket.closed_at %></td>
-          <td><%= ticket.user %></td>
+          <td><%= ticket.user_id %></td>
           <td><%= ticket.service_provider %></td>
           <td><%= ticket.description.ljust(50) %></td>
           <td><%= button_to "View Ticket", { :action => "ticket", :ticket_id => ticket.id }, 
