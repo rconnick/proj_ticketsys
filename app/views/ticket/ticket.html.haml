@@ -1,0 +1,25 @@
+%div{:leftmargin=>"10%", :topmargin=>"5%", :marginwidth=>"10%", :marginheight=>"5%"}
+      
+  = link_to image_tag("/assets/tss.png"), :action=>"index"
+  
+  %div{:align=>"right"}
+    = link_to "logout: #{session[:uname]}", {:action=>"logout"},{:style=>'color:#000000;', :class=>"css_class"}
+   
+  - if session[:priv]=="admin"
+    = render "admin_menu"
+  - elsif session[:priv]=="service_provider"
+    = render "service_provider_menu"
+  - else
+    = render "user_menu"  
+  
+  %h3{:align=>"center"}
+    = "Ticket ID: #{@ticket.id}"  
+  
+  %div{:align=>"left"}
+    %ul= "Ticket ID: #{@ticket.id}"
+    %ul= "User: #{User.find(@ticket.user_id).username}"
+    %ul= "Service Provider: #{@ticket.service_provider}"
+    %ul= "Opened At: #{@ticket.opened_at}"
+    %ul= "Closed At: #{@ticket.closed_at}"
+    %ul= "Description: #{@ticket.description}"
+

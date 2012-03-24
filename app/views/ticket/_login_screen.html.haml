@@ -1,0 +1,30 @@
+%div{:align => "right"}
+  = Time.now
+%hr/
+
+%div{:align => "center"} 
+  %h4{:align => "center", :style => "color:#FF0000"}
+    = if !params[:notice].nil?
+      = params[:notice] 
+  
+= form_tag :action=>"login", :method => :login do
+  .field{:align => "center"}
+    = label_tag :username, "Username: " 
+    = text_field_tag :username, nil, :placeholder=>"Enter your username dog" 
+    
+  .field{:align => "center"}
+    = label_tag :password, "Password: " 
+    = text_field_tag :password, nil, :type=>"password", :placeholder=>"Enter your password"
+    
+  .field{:align => "center"}  
+    = submit_tag "Login"
+
+
+
+
+
+
+
+
+
+

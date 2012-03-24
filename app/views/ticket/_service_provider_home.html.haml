@@ -1,0 +1,56 @@
+- if session[:priv]=="admin"
+  = render "admin_menu" 
+- elsif session[:priv]=="service_provider" 
+  = render "service_provider_menu" 
+- else 
+  = redirect_to :action => "index", :notice => "You do not have privileges"
+
+
+%h2 All Open Tickets
+
+%center
+  %Table{:border=> "1", :cellpadding=>"1", :cellspacing=>"1", :width=>"100%", :overflow=>"hidden" }
+    %tr
+      %th Ticket ID
+      %th Date Open
+      %th Date Closed
+      %th User
+      %th Service Provider
+      %th Description
+      %th View   
+    
+    - if !@my_opened_tickets.nil?
+      - @my_opened_tickets.each do |ticket|
+        %tr
+          %td= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id}, {:style=>'color:#000000;', :class=>"css_class"}
+          %td= ticket.opened_at
+          %td= ticket.closed_at
+          %td= User.find_by_id(ticket.user_id).username
+          %td= ticket.service_provider
+          %td= ticket.description.ljust(50)
+          %td= button_to "View Ticket", { :action => "ticket", :ticket_id => ticket.id }, :method => :ticket
+          
+%h2 All Closed Tickets
+
+%center
+  %Table{:border=> "1", :cellpadding=>"1", :cellspacing=>"1", :width=>"100%", :overflow=>"hidden" }
+    %tr
+      %th Ticket ID
+      %th Date Open
+      %th Date Closed
+      %th User
+      %th Service Provider
+      %th Description
+      %th View   
+    
+    - if !@my_closed_tickets.nil?
+      - @my_closed_tickets.each do |ticket|
+        %tr
+          %td= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id}, {:style=>'color:#000000;', :class=>"css_class"}
+          %td= ticket.opened_at
+          %td= ticket.closed_at
+          %td= User.find_by_id(ticket.user_id).username
+          %td= ticket.service_provider
+          %td= ticket.description.ljust(50)
+          %td= button_to "View Ticket", { :action => "ticket", :ticket_id => ticket.id }, :method => :ticket
+

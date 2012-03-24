@@ -1,0 +1,37 @@
+
+%div{:leftmargin=>"10%", :topmargin=>"5%", :marginwidth=>"10%", :marginheight=>"5%"}
+      
+  = link_to image_tag("/assets/tss.png"), :action=>"index"
+  %div{:align=>"right"}
+    = link_to "logout: #{session[:uname]}", {:action=>"logout"}, {:style=>'color:#000000;', :class=>"css_class"}
+  
+  - if session[:priv]=="admin"
+    = render "admin_menu"
+  - elsif session[:priv]=="service_provider"
+    = redirect_to :action => "index", :notice => "You do not have privileges"
+  - else
+    = redirect_to :action => "index", :notice => "You do not have privileges"
+  
+  
+  %h4{:align=>"center", :style=>"color:#FF0000"}
+    = params[:notice]
+  
+  
+  = form_tag :action=>"add_user", :method => :add_user do
+  
+    .field{:align=>"left"}
+      = label_tag :username, "Username: "
+      = text_field_tag :username, params[:username], :size=>"50%"
+  
+  
+    .field{:align=>"left"}
+      = label_tag :password, "Password: "
+      = text_field_tag :password, nil,:type => "password", :size=>"51%"
+  
+    .select{:align => "left", :width => "50%"}  
+      = label_tag :privilege, "Privilege: "
+      = select_tag "privilege", "<option>user</option><option>service_provider</option><option>admin</option>".html_safe
+    
+    .actions{:align=>"center"}
+      = submit_tag "Create User"
+

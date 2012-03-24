@@ -1,0 +1,38 @@
+%div{:leftmargin=>"10%", :topmargin=>"5%", :marginwidth=>"10%", :marginheight=>"5%"}
+      
+  = link_to image_tag("/assets/tss.png"), :action=>"index"
+  
+  %div{:align=>"right"}
+    = link_to "logout: #{session[:uname]}", {:action=>"logout"}, {:style=>'color:#000000;', :class=>"css_class"}
+
+  - if session[:priv]=="admin"
+    = render "admin_menu"
+  - elsif session[:priv]=="service_provider"
+    = redirect_to :action => "index", :notice => "You do not have privileges"
+  - else
+    = redirect_to :action => "index", :notice => "You do not have privileges"
+
+  %h2 All Users
+  
+  %center
+  %Table{:border=> "1", :cellpadding=>"1", :cellspacing=>"1", :width=>"100%", :overflow=>"hidden" }
+    %tr
+      %th User ID
+      %th Username
+      %th Privilege
+      %th Created At
+      %th View User 
+      %th Edit User
+      %th Delete User   
+    
+    - if !@all_users.nil?
+      - @all_users.each do |user|
+        %tr
+          %td= link_to "#{user.id}", {:action=>"user", :user_id => user.id}, {:style=>'color:#000000;', :class=>"css_class"}
+          %td= user.username
+          %td= user.privilege
+          %td= user.created_at 
+          %td= button_to "View User", { :action => "user", :user_id => user.id }, :method => :user
+          %td= button_to "Edit User", { :action => "edit_user", :user_id => user.id }, :method => :edit_user 
+          %td= button_to "Delete User", { :action => "delete_user", :user_id => user.id }, :confirm => "Are you Sure?", :method => :delete_user 
+ 

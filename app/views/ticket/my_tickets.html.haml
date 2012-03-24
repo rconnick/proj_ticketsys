@@ -1,0 +1,38 @@
+%div{:leftmargin=>"10%", :topmargin=>"5%", :marginwidth=>"10%", :marginheight=>"5%"}
+      
+  = link_to image_tag("/assets/tss.png"), :action=>"index"
+  
+  %div{:align=>"right"}
+    = link_to "logout: #{session[:uname]}", {:action=>"logout"}, {:style=>'color:#000000;', :class=>"css_class"}
+  
+  %hr	
+  %center
+    |
+    = link_to "Home", {:action => "index"}, {:style=>'color:#000000;', :class=>"css_class"}
+    |
+    = link_to "My Tickets", {:action => "my_tickets"}, {:style=>'color:#000000;', :class=>"css_class"}
+    |
+    = link_to "New Ticket", {:action => "new_ticket"}, {:style=>'color:#000000;', :class=>"css_class"}
+    | 
+  
+  %center
+    %Table{:border=> "1", :cellpadding=>"1", :cellspacing=>"1", :width=>"100%", :overflow=>"hidden" }
+      %tr
+        %th Ticket ID 1
+        %th Date Open
+        %th Date Closed
+        %th User
+        %th Service Provider
+        %th Description
+        %th View 
+        
+    - if !@my_tickets.nil?
+      - @my_tickets.each do |ticket|
+        %tr
+          %td= link_to "#{ticket.id}", {:action=>"ticket", :ticket_id => ticket.id}, {:style=>'color:#000000;', :class=>"css_class"}
+          %td= ticket.opened_at
+          %td= ticket.closed_at
+          %td= ticket.user_id
+          %td= ticket.service_provider
+          %td= ticket.description.ljust(50)
+          %td= button_to "View Ticket", { :action => "ticket", :ticket_id => ticket.id }, :method => :ticket

@@ -1,0 +1,10 @@
+%div{:align => "right"}
+  = link_to "logout: #{session[:uname]}", {:action=>"logout"}, 
+                {:style=>'color:#000000;', :class=>"css_class"}
+                
+- if session[:priv]=="admin"
+  = render "admin_home"
+- elsif session[:priv]=="service_provider"
+  = render "service_provider_home"
+- else
+  = render "user_home"
