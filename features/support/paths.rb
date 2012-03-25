@@ -18,10 +18,18 @@ module NavigationHelpers
     
     when /^the Ticket View page$/
       '/ticket'
+    
+    when/^the My Tickets View page$/
+      '/ticket/my_tickets'
       
     when /^the New Ticket page$/
       '/ticket/new_ticket'
       
+    when /^the Login page$/
+      '/'
+      
+    when /^(.*) home page$/
+      '/'
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -12,8 +12,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
-  gem 'rspec-rails'
-  gem 'simplecov'
+  gem 'rspec-rails'  
   gem 'ZenTest'
   gem 'factory_girl'
   gem 'factory_girl_rails', "~> 1.2"
@@ -22,6 +21,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', :require => false
   gem 'cucumber-rails'
   gem 'cucumber-rails-training-wheels'
 end
