@@ -155,4 +155,15 @@ describe TicketController do
       response.should redirect_to :action => 'index', :notice => nil
     end
   end
+  describe 'creating a ticket' do
+    it 'should call the Ticket model method to create a new ticket' do
+      ticket = stub('Ticket')
+      ticket.stub(:save).and_return(true)
+      Ticket.should_receive(:new).and_return(ticket)
+      user = mock('User')
+      user.stub(:nil?).and_return(false)
+      User.stub(:find_by_username).and_return(user)
+      post :new_ticket
+    end
+  end
 end
