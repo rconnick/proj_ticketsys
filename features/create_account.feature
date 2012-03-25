@@ -17,21 +17,3 @@ Scenario: create a new account named "Robert"
   And I press "Submit"
   Then I should be on the Login page
   And I should see "Your account has been created pending admin approval"
-
-
-# We probably don't need this as it is taken care of in the login.feature
-Scenario: try to login with a non-existent account
-  When I fill in "Username" with "Robert"
-  And I fill in "Password" with "Secret"
-  And I press "Login"
-  Then I should be on the Login page
-  And I should see "Invalid username/password"
-
-  
-# We probably don't need this as it is taken care of in the login.feature
-Scenario: login with an existing account
-  Given the user "Robert" exists with the password "Secret"
-  When fill in the Username field with "Robert"
-  And I fill in the Password field with "Secret"
-  And I press "Login"
-  Then I should be on the main page
