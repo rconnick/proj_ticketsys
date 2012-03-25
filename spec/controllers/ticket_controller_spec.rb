@@ -145,5 +145,14 @@ describe TicketController do
       response.should redirect_to :action => 'index', :notice => nil
     end
   end
-  
+    describe 'opening a ticket' do
+    it 'should update the ticket to show that it has been opened' do
+      ticket = mock('ticket')
+      ticket.stub(:id) {'1'}
+      Ticket.should_receive(:find_by_id).with('1').and_return(ticket)
+      ticket.should_receive(:update_attributes!)
+      post :close, :ticket_id => '1'
+      response.should redirect_to :action => 'index', :notice => nil
+    end
+  end
 end
