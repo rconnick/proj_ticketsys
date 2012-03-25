@@ -118,6 +118,41 @@ describe TicketController do
       get :index
     end
   end
-  
-  
+  describe 'viewing a ticket' do
+    it 'should call the ticket model and find the ticket' do
+      ticket = mock('ticket')
+      ticket.stub(:id) {'1'}
+      Ticket.should_receive(:find_by_id).with('1').and_return(ticket)
+      get :ticket, :ticket_id => '1'
+    end
+  end
+  describe 'deleting a ticket' do
+    it 'should call the delete method with an ticket id' do
+      ticket = mock('ticket')
+      ticket.stub(:id){'1'}
+      Ticket.should_receive(:delete).with('1')
+      post :delete, :ticket_id => '1'
+      response.should redirect_to :action => 'index'
+    end
+  end
+  describe 'closing a ticket' do
+    it 'should update the ticket to show that it has been closed' do
+      ticket = mock('ticket')
+      ticket.stub(:id) {'1'}
+      Ticket.should_receive(:find_by_id).with('1').and_return(ticket)
+      ticket.should_receive(:update_attributes!)
+      post :close, :ticket_id => '1'
+      response.should redirect_to :action => 'index', :notice => nil
+    end
+  end
+    describe 'opening a ticket' do
+    it 'should update the ticket to show that it has been opened' do
+      ticket = mock('ticket')
+      ticket.stub(:id) {'1'}
+      Ticket.should_receive(:find_by_id).with('1').and_return(ticket)
+      ticket.should_receive(:update_attributes!)
+      post :close, :ticket_id => '1'
+      response.should redirect_to :action => 'index', :notice => nil
+    end
+  end
 end

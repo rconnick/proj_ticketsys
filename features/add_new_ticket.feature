@@ -18,3 +18,11 @@ Scenario: add ticket
   And I press "Submit Ticket"
   Then I should be on the home page
   And I should see "Broken Computer"
+
+Scenario: add ticket without a description
+	Then I should see "New Ticket"  
+  When I follow "New Ticket"
+  Then I should be on the New Ticket page  
+  When I press "Submit Ticket"
+  Then I should be on the New Ticket page
+  And I should see "Incomplete Ticket "
