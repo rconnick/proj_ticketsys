@@ -38,6 +38,14 @@ When /a ticket with the description "(.*)" exists/ do |des|
   t.save
 end
 
+When /(.*) is logged on/ do |name|
+  user = User.new(:username => name, :privilege => admin, :password => "123")
+  user.save
+  visit path_to "the home page"
+  fill_in("Username:", :with => user.username)
+  fill_in("Password:", :with => user.password)
+  click_button("Login")
+end
 
 
 
