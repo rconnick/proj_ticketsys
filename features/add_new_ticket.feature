@@ -26,3 +26,9 @@ Scenario: add ticket without a description
   When I press "Submit Ticket"
   Then I should be on the New Ticket page
   And I should see "Incomplete Ticket "
+
+Scenario: see service are and ticket type fields
+  Given I am on the New Ticket page
+  I should see "Service area"
+  When I change "Service area" to "IT"
+  Then I should see "Ticket type"
