@@ -32,3 +32,9 @@ Scenario: see service are and ticket type fields
   I should see "Service area"
   When I change "Service area" to "IT"
   Then I should see "Ticket type"
+
+Scenario: automatically assign a service provider
+  Given that the service provider "Shayne" exists in the service area "IT"
+  When I create the ticket 1 with a service area of "IT"
+  And I am viewing ticket 1
+  Then I should see "Shayne"
