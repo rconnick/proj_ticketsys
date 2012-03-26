@@ -1,5 +1,4 @@
 
-
 When /the following tickets exist/ do |tickets_table|
   tickets_table.hashes.each do |ticket|
     Ticket.create!(ticket)    
@@ -33,8 +32,19 @@ When /I am logged on as "(.*)"/ do |privilege|
   click_button("Login")
 end
 
+#should probably DRY out the following three step definitions at some point!
 When /a ticket with the description "(.*)" exists/ do |des|
   t = Ticket.new(:user_id=> 1, :description => des, :opened_at => "now")
+  t.save
+end
+
+When /a Opened ticket with the description "(.*)" exists/ do |des|
+  t = Ticket.new(:user_id=> 1, :description => des, :opened_at => "now", :closed_at => null)
+  t.save
+end
+
+When /a Closed ticket with the description "(.*)" exists/ do |des|
+  t = Ticket.new(:user_id=> 1, :description => des, :opened_at => "now", :closed_at => "now")
   t.save
 end
 
