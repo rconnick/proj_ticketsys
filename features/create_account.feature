@@ -1,5 +1,4 @@
 Feature: create a new account
-  
   As a User
   I want to be able to set up an account, pending Admin approval
   So that the entry process can be streamlined.
@@ -17,7 +16,6 @@ Scenario: create a new account named "Robert"
   Then I should be on the Login page
   And I should see "Your account has been created pending admin approval"
 
-
 # We probably don't need this as it is taken care of in the login.feature
 Scenario: try to login with a non-existent account
   When I fill in "Username" with "Robert"
@@ -26,7 +24,6 @@ Scenario: try to login with a non-existent account
   Then I should be on the Login page
   And I should see "Invalid username/password"
 
-  
 # We probably don't need this as it is taken care of in the login.feature
 Scenario: login with an existing account
   Given the user "Robert" exists with the password "Secret"
