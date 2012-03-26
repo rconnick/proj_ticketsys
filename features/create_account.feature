@@ -11,7 +11,7 @@ Background: user does not exist
 Scenario: create a new account named "Robert"
   When I follow "Create a new account"
   Then I should be on the Create a new account page
-  When I fill in the Name field with "Robert"
+  When I fill in "Name" with "Robert"
   And I press "Submit"
   Then I should be on the Login page
   And I should see "Your account has been created pending admin approval"
@@ -27,7 +27,7 @@ Scenario: try to login with a non-existent account
 # We probably don't need this as it is taken care of in the login.feature
 Scenario: login with an existing account
   Given the user "Robert" exists with the password "Secret"
-  When fill in the Username field with "Robert"
-  And I fill in the Password field with "Secret"
+  When fill in "Username" with "Robert"
+  And I fill in "Password" with "Secret"
   And I press "Login"
   Then I should be on the main page

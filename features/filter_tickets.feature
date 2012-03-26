@@ -14,8 +14,8 @@ Background: tickets in system
   | Microwave on fire | Josh    | 2009-07-23  | open   |
 
 Scenario: filter by status
-  When I check the "Show Closed Tickets" checkbox
-  And I uncheck the "Show Open Tickets" checkbox
+  When I check "Show Closed Tickets"
+  And I uncheck "Show Open Tickets"
   And I press "Update"
   Then I should be on the "Ticket View" page
   And I should see "Broken Printer"
