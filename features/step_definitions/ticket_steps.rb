@@ -42,12 +42,12 @@ When /a ticket with the description "(.*)" exists/ do |des|
   t.save
 end
 
-When /a Opened ticket with the description "(.*)" exists/ do |des|
+When /opened ticket with the description "(.*)" exists/ do |des|
   t = Ticket.new(:user_id=> 1, :description => des, :opened_at => "now", :closed_at => null)
   t.save
 end
 
-When /a Closed ticket with the description "(.*)" exists/ do |des|
+When /closed ticket with the description "(.*)" exists/ do |des|
   t = Ticket.new(:user_id=> 1, :description => des, :opened_at => "now", :closed_at => "now")
   t.save
 end

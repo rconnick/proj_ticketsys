@@ -5,8 +5,8 @@ Feature:  View Tickets
 
 Background: there is an admin account
   Given I am logged on as "admin"    
-  And Opened ticket with the description "Broken stapler" exists
-  And Closed ticket with the description "Fixed stapler" exists
+  And opened ticket with the description "Broken stapler" exists
+  And closed ticket with the description "Fixed stapler" exists
   And I am on the home page
 
 Scenario: view opened tickets
