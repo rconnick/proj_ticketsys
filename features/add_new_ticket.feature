@@ -1,8 +1,7 @@
 Feature: Add a new ticket
-
-As a User
-I want to be able open a new ticket
-So that I can request a needed service
+  As a User
+  I want to be able open a new ticket
+  So that I can request a needed service
 
 Background: tickets in system
   Given "Joe" is logged on as "admin"
