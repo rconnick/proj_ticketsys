@@ -4,7 +4,7 @@ Feature: filter by parameter
   So that I can easily access the proper ticket info
 
 Background: tickets in system
-  Given "Josh" is logged on 
+  Given "Josh" is logged on as "admin" 
   And I am on the "Ticket View" page
   And the following tickets exist:
 

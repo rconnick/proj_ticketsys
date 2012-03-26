@@ -52,6 +52,10 @@ When /closed ticket with the description "(.*)" exists/ do |des|
   t.save
 end
 
+When /I am not logged in/ do
+  assert session[:uid].nil?
+end
+
 
 
 
