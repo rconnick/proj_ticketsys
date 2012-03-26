@@ -1,11 +1,9 @@
 Feature: logging in
-  
   As an admin
   I want to be able to log in
   So that I can see tickets and administrate the app.
 
 Background: there is an admin account
-  
   Given the user "admin" exists with the password "password"
   And I am on the Login page
   #And I am not logged in
