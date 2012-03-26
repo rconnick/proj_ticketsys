@@ -1,8 +1,7 @@
 Feature: filter by parameter
-
-As a User
-I want to be able to filter by date, status, notes, etc
-So that I can easily access the proper ticket info
+  As a User
+  I want to be able to filter by date, status, notes, etc
+  So that I can easily access the proper ticket info
 
 Background: tickets in system
   Given "Josh" is logged on 
