@@ -1,5 +1,4 @@
 Feature: Closing a ticket
-  
   As an admin
   I want to be able to close a ticket
   So that I can indicate that the problem has been taken care of
