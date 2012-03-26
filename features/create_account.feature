@@ -5,7 +5,6 @@ Feature: create a new account
   So that the entry process can be streamlined.
 
 Background: user does not exist
-  
   Given the user "Robert" does not exist
   And I am on the Login page
   And I am not logged in
