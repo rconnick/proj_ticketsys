@@ -21,4 +21,4 @@ Scenario: start to Re-Open the ticket and then change my mind
   Then I should see "Are you sure"
   And I press "Cancel"
   Then I should be on the home page
-  And I should see not "Broken stapler"  
+  And I should not see "Broken stapler"  

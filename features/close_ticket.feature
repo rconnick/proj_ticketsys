@@ -4,8 +4,8 @@ Feature: Closing a ticket
   So that I can indicate that the problem has been taken care of
 
 Background: there is an admin account
+  Given I am logged on as "admin"
   And a ticket with the description "Broken stapler" exists
-  Given I am logged on as "admin"    
   And I am on the My Tickets View page
 
 Scenario: close the ticket

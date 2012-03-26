@@ -19,6 +19,11 @@ When /the user "(.*)" exists with the password "(.*)"/ do |name, password|
   user.save
 end
 
+When /the user "(.*)" does not exist/ do |name|
+  user = User.find_by_username(name)
+  assert user.nil?
+end
+
 #When /I am not logged in/ do
 #end
 
