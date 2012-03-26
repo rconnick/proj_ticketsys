@@ -1,5 +1,4 @@
 Feature:  View Tickets
-  
   As an admin
   I want to easily be able to access/search for all tickets by a variety of parameters
   So that I can monitor progress and reference past issues
