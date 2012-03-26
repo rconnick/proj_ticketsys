@@ -1,5 +1,4 @@
 Feature:  View Tickets
-  
   As a user
   I want to access open/closed tickets
   So that I can track open/closed issues
